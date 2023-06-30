@@ -1,5 +1,4 @@
 package com.mycompany.batalhanaval;
-
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
@@ -7,26 +6,27 @@ import java.util.Scanner;
 public class BatalhaNaval {
     public static void main(String[] args) {
         Scanner Ler = new Scanner(System.in);
-
-        System.out.println("===== BATALHA NAVAL =====");
         int escolhaModo = 0;
 
+        
         do {
+
+            
     System.out.println("Escolha o modo de jogo:");
-    System.out.println("1 - Jogador vs. Jogador");
-    System.out.println("2 - Jogador vs. Máquina");
+    System.out.println("1 - Player vs. Player");
+    System.out.println("2 - Player vs. PC");
 
     try {
         escolhaModo = Ler.nextInt();
         Ler.nextLine(); // Limpar o buffer do teclado
 
         if (escolhaModo < 1 || escolhaModo > 2) {
-            System.out.println("Opção inválida. Tente novamente.");
+            System.out.println("Não deu. Tente novamente.");
             escolhaModo = 0; // Definir um valor inválido para repetir o loop
         }
     } catch (InputMismatchException e) {
-        System.out.println("Opção inválida. Tente novamente.");
-        Ler.nextLine(); // Limpar o buffer do teclado
+        System.out.println("Não deu. Tente novamente.");
+        Ler.nextLine();
     }
     } while (escolhaModo < 1 || escolhaModo > 2);
 
@@ -47,7 +47,7 @@ public class BatalhaNaval {
         }
 
         // Iniciar jogo
-        System.out.println("\n===== INÍCIO DO JOGO =====");
+        System.out.println("\nComeço do jogo");
         boolean jogoFinalizado = false;
         Tabuleiro jogadorAtual = jogador1;
         Tabuleiro oponente = jogador2;
@@ -67,7 +67,7 @@ public class BatalhaNaval {
                     coluna = Aleatorio.nextInt(Tabuleiro.TAMANHO);
 
                     if (oponente.posicaoJaAtacada(linha, coluna)) {
-                        System.out.println("A Máquina já atacou nessa posição. Escolha outra posição.");
+                        System.out.println("A Máquina já atacou. Escolha outra posição.");
                     } else {
                         posicaoValida = true;
                     }
@@ -76,11 +76,10 @@ public class BatalhaNaval {
                 // Jogada do jogador
 
              do {
-            System.out.println("Digite a linha para atacar (1-10):");
+            System.out.println("Digite aonde atacar (1-10):");
             linha = Ler.nextInt();
-            Ler.nextLine(); // Limpar o buffer do teclado
+            Ler.nextLine();
 
-            // Subtrair 1 para obter o índice correto da matriz de ataque
             linha--;
 
             System.out.println("Digite a coluna para atacar (A-J):");
@@ -88,7 +87,7 @@ public class BatalhaNaval {
             coluna = colunaChar - 'A';
 
             if (linha < 0 || linha >= 10 || coluna < 0 || coluna >= 10) {
-                System.out.println("Coordenadas inválidas. Tente novamente.");
+                System.out.println("Coordenadas inválidas. vai denovo.");
             } else if (oponente.posicaoJaAtacada(linha, coluna)) {
                 System.out.println("Você já atacou nessa posição. Escolha outra posição.");
             } else {
@@ -127,15 +126,15 @@ public class BatalhaNaval {
 
     try {
         escolha = ler.nextInt();
-        ler.nextLine(); // Limpar o buffer do teclado
+        ler.nextLine(); 
 
         if (escolha < 1 || escolha > 2) {
             System.out.println("Opção inválida. Tente novamente.");
-            escolha = 0; // Definir um valor inválido para repetir o loop
+            escolha = 0;
         }
     } catch (InputMismatchException e) {
         System.out.println("Opção inválida. Tente novamente.");
-        ler.nextLine(); // Limpar o buffer do teclado
+        ler.nextLine(); 
     }
 } while (escolha < 1 || escolha > 2);
 
