@@ -56,11 +56,11 @@ class Tabuleiro {
 
         while (!posicaoValida) {
             exibirMapa();
-            System.out.printf("Digite as coordenadas para um barco de tamanho %d: ", tamanho);
+            System.out.printf("Digite as coordenadas para o barco de tamanho %d: ", tamanho);
             String coordenadas = Ler.nextLine().toUpperCase();
 
             if (coordenadas.length() < 2) {
-                System.out.println("Coordenadas inválidas. Tente novamente.");
+                System.out.println("Coordenadas inválidas. Vai denovo.");
                 continue;
             }
 
@@ -74,7 +74,7 @@ class Tabuleiro {
             try {
                 int linha = Integer.parseInt(coordenadas.substring(1)) - 1;
 
-                System.out.print("Digite a orientação (V para vertical, H para horizontal): ");
+                System.out.print("Digite a orientação: ");
                 char orientacao = Ler.nextLine().toUpperCase().charAt(0);
                 boolean vertical = (orientacao == 'V');
 
@@ -83,7 +83,7 @@ class Tabuleiro {
                     System.out.println("Barco posicionado com sucesso!");
                     posicaoValida = true;
                 } else {
-                    System.out.println("Posição inválida. Tente novamente.");
+                    System.out.println("Posição inválida. Vai denovo.");
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Coordenadas inválidas. Tente novamente.");
